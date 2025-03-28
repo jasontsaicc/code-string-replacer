@@ -8,7 +8,6 @@ FIND_STRING=""
 REPLACE_STRING=""
 EXCLUDE_PATTERNS=""
 
-# Ensure -find and -replace are not empty
 # Read CLI arguments
 while [[ "$#" -gt 0 ]]; do
     case "$1" in
@@ -31,6 +30,16 @@ while [[ "$#" -gt 0 ]]; do
     esac
 done
 
+# Ensure -find and -replace are not empty
+# check required params 
+if [[ -z "$FIND_STRING" || -z "$REPLACE_STRING" ]]; then
+    echo "Usage: $0 --find <string> --replace <string> [--exclude ext1, folder2, ...]"
+    exit 1
+fi
+
+echo "Find: $FIND_STRING"
+echo "Replace: $REPLACE_STRING"
+echo "Exclude: ${EXCLUDE_PATTERNS[@]}"
 
 # 3. Create a counter: replace_count = 0
 
