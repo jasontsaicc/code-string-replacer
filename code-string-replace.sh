@@ -60,7 +60,12 @@ TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 LOG_FILE="replace_log_$(TIMESTAMP).log"
 REPLACE_COUNT=0
 
-
 # 5. Use the find command to list all files
-
+# main file scanning loop
+echo "Scanning files..."
+while IFS= read -r -d '' file; do
+    if should_exclude "$file"; then
+        echo "Excluding: $file"
+        continue
+    fi
 # 6. Display the total number of replacements made
