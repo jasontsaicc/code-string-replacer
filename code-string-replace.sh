@@ -52,10 +52,14 @@ should_exclude() {
     return 1 # false, should not exclude
 }
 
-
 # 3. Create a counter: replace_count = 0
-
 # 4. Create a log file: log_file = "replace_log_<timestamp>.log"
+
+# Create a log file
+TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+LOG_FILE="replace_log_$(TIMESTAMP).log"
+REPLACE_COUNT=0
+
 
 # 5. Use the find command to list all files
 
